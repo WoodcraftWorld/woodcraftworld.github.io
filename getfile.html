@@ -1,0 +1,56 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-gb" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Untitled 1</title>
+<style type="text/css">
+.auto-style1 {
+	text-align: center;
+	font-size: 72pt;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.auto-style3 {
+	text-align: center;
+	font-size: xx-large;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+</style>
+</head>
+
+<body>
+<center>
+<p class="auto-style1"><em><strong>Thank you for downloading</strong></em></p>
+<p class="auto-style1"><em><strong>WoodcraftWorld Software</strong></em></p>
+<p class="auto-style3" style="text-align: left">Filename:</p>
+<script>
+const resultsList = document.getElementById('results')
+new URLSearchParams(window.location.search).forEach((value) => {
+ // Create anchor element.
+                var a = document.createElement('iframe'); 
+                var b = document.createElement('h1');  
+                // Create the text node for anchor element.
+                var link = document.createTextNode(`                                             ${value}`);
+                  
+                // Append the text node to anchor element.
+                b.appendChild(link); 
+                  
+                // Set the title.
+                a.title = "DownloadFrame"; 
+                
+				a.width = "1";
+				a.height= "1";  
+                // Set the href property.
+                a.src = `https://github.com/WoodcraftWorld/Downloads/raw/software/${value}`; 
+                  
+                // Append the anchor element to the body.
+                document.body.appendChild(b); 
+                document.body.appendChild(a);
+})
+</script>
+</center>
+</body>
+
+</html>
