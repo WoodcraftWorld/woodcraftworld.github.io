@@ -28,26 +28,18 @@
 <script>
 const resultsList = document.getElementById('results')
 new URLSearchParams(window.location.search).forEach((value) => {
- // Create anchor element.
-                var a = document.createElement('iframe'); 
-                var b = document.createElement('h1');  
-                // Create the text node for anchor element.
-                var link = document.createTextNode(`                                             ${value}`);
+                var iframe = document.createElement('iframe'); 
+                var text = document.createElement('h1');  
+                var link = document.createTextNode(`${value}`);
                   
-                // Append the text node to anchor element.
-                b.appendChild(link); 
-                  
-                // Set the title.
-                a.title = "DownloadFrame"; 
                 
-				a.width = "1";
-				a.height= "1";  
-                // Set the href property.
-                a.src = `https://github.com/WoodcraftWorld/Downloads/raw/software/${value}`; 
-                  
-                // Append the anchor element to the body.
-                document.body.appendChild(b); 
-                document.body.appendChild(a);
+                texy.appendChild(link);
+                iframe.title = "DownloadFrame"; 
+				iframe.width = "1";
+				iframe.height= "1";  
+                iframe.src = `https://github.com/WoodcraftWorld/Downloads/raw/software/${value}`;
+                document.body.appendChild(text); 
+                document.body.appendChild(iframe);
 })
 </script>
 </center>
