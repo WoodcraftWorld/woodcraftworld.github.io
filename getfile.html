@@ -31,12 +31,10 @@ new URLSearchParams(window.location.search).forEach((value) => {
                 var iframe = document.createElement('iframe'); 
                 var text = document.createElement('h1');  
                 var link = document.createTextNode(`${value}`);
-                  
-                
                 text.appendChild(link);
                 iframe.title = "DownloadFrame"; 
-				iframe.width = "1";
-				iframe.height= "1";  
+		iframe.width = "1";
+		iframe.height= "1";  
                 iframe.src = `https://github.com/WoodcraftWorld/Downloads/raw/software/${value}`;
                 document.body.appendChild(text); 
                 document.body.appendChild(iframe);
