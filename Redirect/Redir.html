@@ -1,0 +1,19 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+<script>
+const resultsList = document.getElementById('results')
+new URLSearchParams(window.location.search).forEach((value) => {
+                var text = document.createElement('h1');  
+                var link = document.createTextNode(`${value}`);
+                text.appendChild(link);
+                document.body.appendChild(text); 
+                })
+</script>
+<form method="get" action="RedirTo.html">
+	<input name="Text1" type="text" /><br />
+<input type="submit" />
+</form>
+</body>
+</html>
