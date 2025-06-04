@@ -1,0 +1,6 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+.weebly.com	TRUE	/	FALSE	1999999999	__cf_bm	Tm_mOeWgqfvUc7NsuZr5q5Qnyjj_8lUGHA4hcxFALs8-1749070889-1.0.1.1-4RXVJlTJx.oOre2cXoApW_btSu8DYvWhzxFOUA8E5LAAwuirl5OYXfgqGq12QTdtRd4OExMhhbinRMXWOtg.Pf.nvVNGS9gNGMAkg_mGHaQ
+woodcraftworld.weebly.com	TRUE	/	FALSE	1999999999	SameSite	None
+weebly.com	TRUE	/	FALSE	1999999999	sto-id-editor	AJALBNAK
+
