@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-	
-<!-- Mirrored from woodcraftworld.weebly.com/my-first-arch-linux-installation.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Jun 2025 21:01:41 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-<head>
-		<title>My first Arch Linux installation</title><meta property="og:site_name" content="WoodcraftWorld" />
-<meta property="og:title" content="My first Arch Linux installation" />
-<meta property="og:description" content="WoodcraftWorld" />
-<meta property="og:image" content="../cdn2.editmysite.com/images/site/footer/og-image-placeholder-blank.png" />
-<meta property="og:url" content="my-first-arch-linux-installation.html" />
+<html lang="en"><!-- Mirrored from woodcraftworld.weebly.com/asahi-linux-on-m2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Jun 2025 21:01:34 GMT --><!-- Added by HTTrack --><head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><!-- /Added by HTTrack -->
+
+		<title>Asahi Linux on M2</title><meta property="og:site_name" content="WoodcraftWorld">
+<meta property="og:title" content="Asahi Linux on M2">
+<meta property="og:description" content="WoodcraftWorld">
+<meta property="og:image" content="../cdn2.editmysite.com/images/site/footer/og-image-placeholder-blank.png">
+<meta property="og:url" content="asahi-linux-on-m2.html">
 
 
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
 		
-		<link id="wsite-base-style" rel="stylesheet" type="text/css" href="../cdn2.editmysite.com/css/sitesdc1a.css?buildTime=1748990801" />
-<link rel="stylesheet" type="text/css" href="../cdn2.editmysite.com/css/old/fancyboxec69.css?1748990801" />
-<link rel="stylesheet" type="text/css" href="files/main_style3422.css?1749070420" title="wsite-theme-css" />
-<link href='../cdn2.editmysite.com/fonts/Source_Sans_Pro/fontc81e.css?2' rel='stylesheet' type='text/css' />
+		<link id="wsite-base-style" rel="stylesheet" type="text/css" href="Asahi%20Linux%20on%20M2_files/sitesdc1a.css">
+<link rel="stylesheet" type="text/css" href="Asahi%20Linux%20on%20M2_files/fancyboxec69.css">
+<link rel="stylesheet" type="text/css" href="Asahi%20Linux%20on%20M2_files/main_style3422.css" title="wsite-theme-css">
+<link href="Asahi%20Linux%20on%20M2_files/fontc81e.css" rel="stylesheet" type="text/css">
 
-<style type='text/css'>
+<style type="text/css">
 .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
 #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
 .wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
@@ -72,10 +69,10 @@ var STATIC_BASE = 'http://cdn1.editmysite.com/';
 var ASSETS_BASE = 'http://cdn2.editmysite.com/';
 var STYLE_PREFIX = 'wsite';
 </script>
-<script src='../cdn2.editmysite.com/js/jquery-1.8.3.min.js'></script>
+<script async="" src="Asahi%20Linux%20on%20M2_files/snowday262.js"></script><script type="text/javascript" async="" src="Asahi%20Linux%20on%20M2_files/ga.js"></script><script src="Asahi%20Linux%20on%20M2_files/jquery-1.8.3.min.js"></script>
 
-<script type="text/javascript" src="../cdn2.editmysite.com/js/lang/en/stle2f6.js?buildTime=1748990801&amp;"></script>
-<script src="../cdn2.editmysite.com/js/site/maindc1a.js?buildTime=1748990801"></script><script type="text/javascript">
+<script type="text/javascript" src="Asahi%20Linux%20on%20M2_files/stle2f6.js"></script>
+<script src="Asahi%20Linux%20on%20M2_files/maindc1a.js"></script><script type="text/javascript">
 		function initCustomerAccountsModels() {
 					(function(){_W.setup_rpc({"url":"\/ajax\/api\/JsonRPC\/CustomerAccounts\/","actions":{"CustomerAccounts":[{"name":"login","len":2,"multiple":false,"standalone":false},{"name":"logout","len":0,"multiple":false,"standalone":false},{"name":"getSessionDetails","len":0,"multiple":false,"standalone":false},{"name":"getAccountDetails","len":0,"multiple":false,"standalone":false},{"name":"getOrders","len":0,"multiple":false,"standalone":false},{"name":"register","len":4,"multiple":false,"standalone":false},{"name":"emailExists","len":1,"multiple":false,"standalone":false},{"name":"passwordReset","len":1,"multiple":false,"standalone":false},{"name":"passwordUpdate","len":3,"multiple":false,"standalone":false},{"name":"validateSession","len":1,"multiple":false,"standalone":false}]},"namespace":"_W.CustomerAccounts.RPC"});
 _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":"_W.CustomerAccounts.BackboneModelData","collection_namespace":"_W.CustomerAccounts.BackboneCollectionData","bootstrap_namespace":"_W.CustomerAccounts.BackboneBootstrap","models":{"CustomerAccounts":{"_class":"CustomerAccounts.Model.CustomerAccounts","defaults":null,"validation":null,"types":null,"idAttribute":null,"keydefs":null}},"collections":{"CustomerAccounts":{"_class":"CustomerAccounts.Collection.CustomerAccounts"}},"bootstrap":[]});
@@ -98,13 +95,13 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 			_W.storeEuPrivacyPolicyUrl = "";
 			com_currentSite = "624772336343964299";
 			com_userID = "54296877";</script><script type="text/javascript">_W.configDomain = "www.weebly.com";</script><script>_W.relinquish && _W.relinquish()</script>
-<script type="text/javascript" src="../cdn2.editmysite.com/js/lang/en/stle2f6.js?buildTime=1748990801&amp;"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "../www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
+<script type="text/javascript" src="Asahi%20Linux%20on%20M2_files/stle2f6.js"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "../www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
 	
 	
 	function initFlyouts(){
 		initPublishedFlyoutMenus(
-			[{"id":"964784870801511281","title":"&lt; Back","url":"..\/..\/index.htm","target":"","nav_menu":false,"nonclickable":false}],
-			"732199411412144394",
+			[{"id":"964784870801511281","title":"THIS WEBSITE HAS MOVED, PLEASE CLICK HERE TO VISIT IT!","url":"https:\/\/sites.google.com\/view\/woodcraftworld\/","target":"","nav_menu":false,"nonclickable":false}],
+			"119070913778100059",
 			'',
 			'active',
 			false,
@@ -116,11 +113,11 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 </script>
 		
 		
-	</head>
-	<body class="tall-header-page  wsite-theme-light  wsite-page-my-first-arch-linux-installation"><div id="nav-wrap">
+	<style type="text/css">.customer-accounts-app__body[data-v-07eff8e1]{width:100%}.customer-accounts-app__modal-wrapper[data-v-07eff8e1]{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:17;display:flex;flex-direction:column;justify-content:center;align-items:center;background:rgba(0,0,0,.25)}.customer-accounts-app__modal[data-v-07eff8e1]{width:580px;box-sizing:border-box;max-height:100%;min-height:415px;overflow-y:auto;z-index:18;padding:24px;background:#fff;display:flex}.wsite-theme-dark .customer-accounts-app__modal-wrapper[data-v-07eff8e1]{background:hsla(0,0%,100%,.25)}.wsite-theme-dark .customer-accounts-app__modal[data-v-07eff8e1]{background:#000}@media (max-width:750px){.customer-accounts-app__modal[data-v-07eff8e1]{width:100%;height:100%}}</style><style type="text/css">.loading[data-v-3519d388]{display:flex;width:100%;align-items:center;justify-content:center;margin:15px 0}</style><style type="text/css">.page-header__wrapper[data-v-81ca95b4]{display:flex;flex-direction:row;align-items:center;justify-content:space-between}.page-header__text[data-v-81ca95b4]{margin:0 32px 0 0}.page-header__divider[data-v-81ca95b4]{height:1px;width:100%;margin:24px 0;background:rgba(0,0,0,.1)}</style><style type="text/css">.form-field[data-v-29b796a4]{margin:16px 0}.form-field__label[data-v-29b796a4]{display:flex;flex-direction:column}.form-field__title[data-v-29b796a4]{margin-bottom:8px;font-size:90%;color:#3b526d}.wsite-theme-dark .form-field__title[data-v-29b796a4]{color:#dfe6ee}.form-field__error[data-v-29b796a4]{margin-top:14px}</style><style type="text/css">.field-error[data-v-1c00ebfa]{color:#ff2825}</style><style type="text/css">.form-instructions[data-v-57a288ec]{margin-bottom:24px}</style><style type="text/css">.site-input[data-v-cbc6ea64]{border:1px solid #dbdbdb;padding:8px;border-radius:2px}.site-input__is-invalid[data-v-cbc6ea64]{border:1px solid #ff2825}</style><style type="text/css">.actions-row[data-v-4932eaa4]{margin-top:24px;display:flex;flex-direction:row;justify-content:space-between;align-items:center}.actions-row div[data-v-4932eaa4]:first-child{margin-right:16px}</style><style type="text/css">.back-button[data-v-9298a980]{display:flex;flex-direction:row;align-items:center}.back-button__icon[data-v-9298a980]{margin:0 8px 0 0}</style><style type="text/css">p[data-v-0770d94c]{font-weight:700}.order-confirmation__checkbox[data-v-0770d94c]{margin-right:6px}.order-confirmation__success-message[data-v-0770d94c]{display:flex;flex-direction:row;align-items:center}</style><style type="text/css">.register__privacy-policy[data-v-4f309485]{margin:24px 0;font-size:small}</style><style type="text/css">.customer-accounts-app__body[data-v-2752a12c]{width:100%}.customer-accounts-app__modal-wrapper[data-v-2752a12c]{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:17;display:flex;flex-direction:column;justify-content:center;align-items:center;background:rgba(0,0,0,.25)}.customer-accounts-app__modal[data-v-2752a12c]{width:580px;box-sizing:border-box;max-height:100%;min-height:415px;overflow-y:auto;z-index:18;padding:24px;background:#fff;display:flex}.wsite-theme-dark .customer-accounts-app__modal-wrapper[data-v-2752a12c]{background:hsla(0,0%,100%,.25)}.wsite-theme-dark .customer-accounts-app__modal[data-v-2752a12c]{background:#000}@media (max-width:600px){.customer-accounts-app__modal[data-v-2752a12c]{width:100%;height:100%}}</style><style type="text/css">.account-details__wrapper[data-v-29f64e05]{width:100%}.account-details__group[data-v-29f64e05]{margin-bottom:24px;text-align:left}.account-details__table-container[data-v-29f64e05]{overflow:auto}.account-details__title[data-v-29f64e05]{text-align:left;margin-bottom:6px}.account-details__log-out[data-v-29f64e05]{cursor:pointer}.account-details__error[data-v-29f64e05]{margin:36px 0;text-align:left}.error[data-v-29f64e05]{color:#ff2825}</style><style type="text/css">.section-header__wrapper[data-v-6d7d03a4]{display:flex;flex-direction:row;align-items:center;justify-content:space-between}.section-header__text[data-v-6d7d03a4]{margin:24px 0}</style><style type="text/css">.empty-content-area__container[data-v-498ccaa4]{display:flex;flex-direction:row;align-items:center;justify-content:center;margin-bottom:32px;width:100%;min-height:80px;background:#f2f2f2}.wsite-theme-dark .empty-content-area__container[data-v-498ccaa4]{background:#000}</style><style type="text/css">.order-details__table[data-v-3e08a283]{width:100%;margin-top:12px;margin-bottom:36px;empty-cells:show;border-collapse:collapse;border-spacing:0;border:none}.order-details__table th[data-v-3e08a283]{margin:0;padding:16px;text-align:left;background:#f2f2f2}.wsite-theme-dark .order-details__table th[data-v-3e08a283]{background:#000}.order-details__table td[data-v-3e08a283]{margin:0;padding:16px;text-align:left}</style><style type="text/css">.shipping-address__wrapper[data-v-7d842472]{text-align:left;width:100%}</style><style type="text/css">.reset-password__link[data-v-1b4ea0c2]{cursor:pointer}</style></head>
+	<body class="tall-header-page  wsite-theme-light  wsite-page-asahi-linux-on-m2"><div id="nav-wrap">
         <div class="container">
             <table id="header">
-                <tr>
+                <tbody><tr>
                     <td id="logo"><span class="wsite-logo">
 
 	
@@ -131,11 +128,8 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 </span></td>
 					<td><ul class="wsite-menu-default">
-		<li id="pg964784870801511281" class="wsite-menu-item-wrap">
-			<a
-						href="../../index.htm"
-				class="wsite-menu-item"
-				>
+		<li id="pg964784870801511281" class="wsite-menu-item-wrap   wsite-nav-1" style="position: relative;">
+			<a href="file:///Users/woodcraftworld/Library/CloudStorage/GoogleDrive-maxhenry0995@gmail.com/My%20Drive/My%20Web%20Sites/technology/index.htm" class="wsite-menu-item" style="position: relative;">
 				&lt; Back
 			</a>
 			
@@ -143,7 +137,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 </ul>
 </td>
                 </tr>
-            </table>
+            </tbody></table>
         </div><!-- end container -->
     </div><!-- end nav-wrap -->
 	
@@ -151,7 +145,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 		<div class="container">
 			<div id="banner">
 				<h2><span class="wsite-text wsite-headline">
-	My first Arch Linux installation
+	Asahi Linux on Apple M2
 </span></h2>
 				<p></p>
 			</div>
@@ -160,16 +154,13 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
     <div id="main-wrap">
         <div class="container">
-   			<div id="wsite-content" class="wsite-elements wsite-not-footer">
+   			<iframe allowfullscreen="" src="http://www.youtube.com/embed/Hb4VYs-J1yM" frameborder="0" width="1000" height="600"></iframe><div id="wsite-content" class="wsite-elements wsite-not-footer">
 	<div class="wsite-youtube" style="margin-bottom:10px;margin-top:10px;"><div class="wsite-youtube-wrapper wsite-youtube-size-auto wsite-youtube-align-center">
-<div class="wsite-youtube-container">
 
-<iframe src="http://www.youtube.com/embed/EIgo8nzYym0?wmode=opaque" frameborder="0" allowfullscreen></iframe>
-</div>
 </div></div>
 
 <div style="text-align:center;"><div style="height: 10px; overflow: hidden;"></div>
-<a class="wsite-button wsite-button-small wsite-button-normal" href="https://www.youtube.com/watch?v=EIgo8nzYym0&amp;lc=Ugxx66GHg5WewGZTyUF4AaABAg" target="_blank">
+<a class="wsite-button wsite-button-small wsite-button-normal" href="https://www.youtube.com/watch?v=Hb4VYs-J1yM&amp;lc=UgxCmnj96G8DG2FXC5B4AaABAg" target="_blank">
 <span class="wsite-button-inner">Discuss in comments</span>
 </a>
 <div style="height: 10px; overflow: hidden;"></div></div>
@@ -177,16 +168,16 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <h2 class="wsite-content-title">Links for the video:</h2>
 
 <div style="text-align:left;"><div style="height: 10px; overflow: hidden;"></div>
-<a class="wsite-button wsite-button-small wsite-button-normal" href="https://archlinux.org/download/" target="_blank">
-<span class="wsite-button-inner">Download Arch Linux</span>
+<a class="wsite-button wsite-button-small wsite-button-normal" href="https://asahilinux.org/" target="_blank">
+<span class="wsite-button-inner">Download Asahi Linux</span>
 </a>
 <div style="height: 10px; overflow: hidden;"></div></div>
 
-<div style="text-align:left;"><div style="height: 10px; overflow: hidden;"></div>
-<a class="wsite-button wsite-button-small wsite-button-normal" href="https://wiki.archlinux.org/title/Installation_guide" target="_blank">
-<span class="wsite-button-inner">Arch linux install guide</span>
-</a>
-<div style="height: 10px; overflow: hidden;"></div></div>
+<h2 class="wsite-content-title">Asahi Linux Portal 2 Stream VOD:</h2>
+
+<div class="wsite-youtube" style="margin-bottom:10px;margin-top:10px;"><iframe allowfullscreen="" src="http://www.youtube.com/embed/sL5h3YisLbk" frameborder="0" width="1000" height="600"></iframe><div class="wsite-youtube-wrapper wsite-youtube-size-auto wsite-youtube-align-center">
+
+</div></div>
 </div>
 
         </div><!-- end container -->
@@ -209,7 +200,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 
 
-<script type="text/javascript" src="../cdn2.editmysite.com/js/site/footerSignupdc1a.js?buildTime=1748990801"></script>
+<script type="text/javascript" src="Asahi%20Linux%20on%20M2_files/footerSignupdc1a.js"></script>
 <script type="text/javascript">
 	if (document.readystate === 'complete') {
 		Weebly.footer.setupContainer('cdn2.editmysite.com', '1748990801');
@@ -220,7 +211,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 	}
 </script>
 
-<script type='text/javascript'>
+<script type="text/javascript">
 //<!--
 
 if (document.cookie.match(/(^|;)\s*is_mobile=1/)) {
@@ -242,7 +233,7 @@ if (document.cookie.match(/(^|;)\s*is_mobile=1/)) {
         </div><!-- end container -->
     </div><!-- end footer-wrap -->
     <div id="customer-accounts-app"></div>
-    <script src="../cdn2.editmysite.com/js/site/main-customer-accounts-sitedc1a.js?buildTime=1748990801"></script>
+    <script src="Asahi%20Linux%20on%20M2_files/main-customer-accounts-sitedc1a.js"></script>
 
 		<script type="text/javascript">
 	var _gaq = _gaq || [];
@@ -261,7 +252,7 @@ if (document.cookie.match(/(^|;)\s*is_mobile=1/)) {
 	_W.Analytics.trackers.wGA = '_gaq';
 </script>
 
-<script type="text/javascript" async=1>
+<script type="text/javascript" async="1">
 	// NOTE: keep the getElementsByTagName(o)**[1]** if you replace this code. Otherwise cookie banner scripts won't be first on the page
 	;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
 			p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
@@ -413,7 +404,8 @@ if (document.cookie.match(/(^|;)\s*is_mobile=1/)) {
 </script>
 
 
-	</body>
+	
 
-<!-- Mirrored from woodcraftworld.weebly.com/my-first-arch-linux-installation.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Jun 2025 21:01:41 GMT -->
-</html>
+
+
+<div id="wsite-menus"></div></body><!-- Mirrored from woodcraftworld.weebly.com/asahi-linux-on-m2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Jun 2025 21:01:40 GMT --></html>
