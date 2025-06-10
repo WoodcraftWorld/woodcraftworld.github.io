@@ -1,0 +1,110 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-gb">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style>
+@font-face {
+  font-family: 'FranklinGothic';
+  src: url('./fonts/FranklinGothic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FranklinGothicItalics';
+	src: url('./fonts/FranklinGothicITALIC.ttf');}
+body {
+  font-family: 'FranklinGothic', sans-serif;
+  color: white;
+}
+a {
+      color: palegreen;
+    }
+
+    a:visited {
+      color: palegreen;
+    }
+
+    a:hover {
+      color: orange;
+    }
+
+    a:active {
+      color: red;
+    }
+.bodyclass {
+      transition: transform 0.3s ease;
+      margin: 50px auto;
+      font-size:18px;
+    }
+.scaled {
+      transform: scale(0.55); 
+	  transform-origin: top center;
+    font-size:40px;
+    }
+ body {
+      background: radial-gradient(circle, #560dfc, #7d00ff);
+      
+    }
+</style>
+<title>WoodcraftWorld Download Centre - &#47;</title>
+</head>
+
+<body>
+
+
+<div align="center">
+<table class="bodyclass" border="0" width="80%">
+	<tr>
+		<td><center><a href="../index.htm"><img border="0" src="../images/logohome.png" width="40%" alt="WoodcraftWorld Logo & Home button"></a></center></td>	
+	</tr>
+	<tr>
+		<td><center><img border="0" src="../images/downloadcentre.png" width="50%" alt="Download Centre"></center></td>
+	</tr>
+	<tr>
+		<td>
+		<!--Content-->
+    <center>
+      <br />
+    <a href="usefulsoftware.htm">useful software</a><br />
+    <a href="operatingsystems.htm">operating systems</a><br />
+    <a href="osuskins.htm">osu! skins</a><br />
+    <a href="other.htm">other</a>
+    </center>
+		</td>
+	</tr>
+  
+</table>
+
+</div>
+
+</body>
+ <script>
+    function checkOrientation() {
+      const target = document.querySelector('.bodyclass');
+      
+      if (window.innerWidth-100 > window.innerHeight) {
+        target.classList.add('scaled');
+        
+      } else {
+        target.classList.remove('scaled');
+        
+      }
+    }
+
+    // Initial check
+    checkOrientation();
+
+    // Re-check on window resize
+    window.addEventListener('resize', checkOrientation);
+    const images = [
+      'images/ytbanner.png',
+      'images/vtuber.png',
+      'images/mii.png'
+    ];
+
+    window.onload = function () {
+      const randomIndex = Math.floor(Math.random() * images.length);
+      const selectedImage = images[randomIndex];
+      document.getElementById('mainimage').src = selectedImage;
+    };
+  </script>
+</html>
