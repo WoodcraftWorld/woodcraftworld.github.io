@@ -1,0 +1,118 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-gb">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style>
+@font-face {
+  font-family: 'FranklinGothic';
+  src: url('./fonts/FranklinGothic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FranklinGothicItalics';
+	src: url('./fonts/FranklinGothicITALIC.ttf');}
+body {
+  font-family: 'FranklinGothic', sans-serif;
+  color: white;
+}
+.bodyclass {
+      transition: transform 0.3s ease;
+      margin: 50px auto;
+    }
+.scaled {
+      transform: scale(0.55); /* adjust scale as needed */
+	  transform-origin: top center;
+    }
+ body {
+      background: radial-gradient(circle, #560dfc, #7d00ff);
+      /* You can change the direction and colors */
+    }
+</style>
+<title>WoodcraftWorld Homepage</title>
+</head>
+
+<body>
+
+
+<div align="center">
+<table class="bodyclass" border="0" width="80%">
+	<tr>
+		<td><center><img border="0" src="images/logo.png" width="60%" alt="WoodcraftWorld Logo"></center></td>	
+	</tr>
+	<tr>
+		<td><center><img border="0" id="mainimage" width="90%" alt="Main image"></center></td>
+	</tr>
+	<tr>
+		<td>
+		<table border="0" width="100%">
+      <tr>
+        <td width="50%"><a href="socials.htm"><img src="images/buttons/socials.png" width="100%" alt="Social media"></a></td>
+        <td width="50%">&nbsp;</td>
+      </tr>
+    </table>
+    <table border="0" width="100%">
+      <tr>
+        <td width="30%">&nbsp;</td>
+        <td width="70%"><a href="WhyTheNameWoodcraftWorld.htm"><img src="images/buttons/whythename.png" width="100%" alt="Why the name WoodcraftWorld?"></a></td>
+      </tr>
+    </table>
+    <table border="0" width="100%">
+      <tr>
+        <td width="10%">&nbsp;</td>
+        <td width="60%"><a href="technology/index.htm"><img src="images/buttons/techvideos.png" width="100%" alt="WoodcraftWorld Technology"></a></td>
+        <td width="20%">&nbsp;</td>
+      </tr>
+    </table>
+    <table border="0" width="100%">
+      <tr>
+        <td width="5%">&nbsp;</td>
+        <td width="30%"><a href="projects/index.htm"><img src="images/buttons/projects.png" width="100%" alt="Projects"></a></td>
+        <td width="55%">&nbsp;</td>
+      </tr>
+    </table>
+    <table border="0" width="100%">
+      <tr>
+        <td width="20%">&nbsp;</td>
+        <td width="30%"><a href="downloadcentre/index.htm"><img src="images/buttons/downloads.png" width="100%" alt="Downloads"></a></td>
+        <td width="50%">&nbsp;</td>
+      </tr>
+    </table>
+		</td>
+	</tr>
+  
+</table>
+
+</div>
+
+</body>
+ <script>
+    function checkOrientation() {
+      const target = document.querySelector('.bodyclass');
+      
+      if (window.innerWidth-100 > window.innerHeight) {
+        target.classList.add('scaled');
+        
+      } else {
+        target.classList.remove('scaled');
+        
+      }
+    }
+
+    // Initial check
+    checkOrientation();
+
+    // Re-check on window resize
+    window.addEventListener('resize', checkOrientation);
+    const images = [
+      'images/ytbanner.png',
+      'images/vtuber.png',
+      'images/mii.png'
+    ];
+
+    window.onload = function () {
+      const randomIndex = Math.floor(Math.random() * images.length);
+      const selectedImage = images[randomIndex];
+      document.getElementById('mainimage').src = selectedImage;
+    };
+  </script>
+</html>

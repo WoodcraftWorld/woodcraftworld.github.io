@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>effect generator</title>
+    <script>
+        function formchanged(){
+        var xblu = document.getElementsByName("xblu")[0].value;
+        var fx = document.getElementsByName("fx")[0].value;
+        var time = document.getElementsByName("time")[0].value;
+        var pwr = document.getElementsByName("pwr")[0].value;
+        document.writeln("/effect " + xblu + " " + fx + " " + time + " " + pwr)
+        }
+      </script>
+</head>
+
+<body>
+    
+      <form type="get">
+          <label>Username</label>
+<div>
+          <input id="xblu" name="xblu" placeholder="or @p,@r,@a,@e,@s">
+<div>
+          <label>Effect</label>
+<div>
+          <select id="fx" name="fx">
+              <option id="1">speed</option>
+              <option id="2">slowness</option>
+              <option id="1">haste</option>
+              <option id="1">mining_fatigue</option>
+              <option id="1">strength</option>
+              <option id="1">instant_health</option>
+              <option id="1">instant_damage</option>
+              <option id="1">jump_boost</option>
+              <option id="1">nausea</option>
+              <option id="1">regeneration</option>
+              <option id="1">resistance</option>
+              <option id="1">fire_resistance</option>
+              <option id="1">water_breathing</option>
+              <option id="1">invisibility</option>
+              <option id="1">blindness</option>
+              <option id="1">night_vision</option>
+              <option id="1">hunger</option>
+              <option id="1">weakness</option>
+              <option id="1">poison</option>
+              <option id="1">wither</option>
+              <option id="1">health_boost</option>
+              <option id="1">absorption</option>
+              <option id="1">saturation</option>
+              <option id="1">levitation</option>
+              <option id="1">fatal_poison</option>
+              <option id="1">slow_falling</option>
+              <option id="1">conduit_power</option>
+              <option id="1">bad_omen</option>
+              <option id="1">village_hero</option>
+              <option id="1">darkness</option>
+          </select>
+<div>
+<label>Length (seconds)</label>
+<div>
+          <input type="number" id="time" name="time" min="1">
+<div>
+<label>Power</label>
+<div>
+          <input type="number" name="pwr" id="pwr" min="0" max="255" placeholder="max 255">
+<div>
+          <button id=submit name=submit onclick="formchanged()">Generate!</button>
+      </form>   
+</body>
+</html>
