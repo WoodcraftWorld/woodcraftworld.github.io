@@ -108,7 +108,11 @@ body {
         var horiz = document.getElementById("horiz");
         var mainimage = document.getElementById("mainimage");
         vert.style.width = "100%";
-        horiz.style.width="0px";
+        if (navigator.userAgent.includes("Safari")){
+          horiz.style.width="1px";
+        } else {
+          horiz.style.width="0px";
+        }
         mainimage.style.width="60%";
       }
     }
