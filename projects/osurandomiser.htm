@@ -41,8 +41,11 @@
   <script>
     if(navigator.userAgent.includes("Safari")){
       if (navigator.userAgent.includes("Macintosh")){
-        alert("Safari or iPad detected!\n\nIf you are using a Mac:\nPlease ensure to allow all pop-up windows for the site to work correctly. Using Chrome or Firefox is highly recommended.\n\nIf you are using an iPad:\nThis site is known to be broken on the iOS version of Safari, Firefox and Opera. Please visit using Chrome or Edge. Compatibility with browsers other than Chrome and Edge is unknown.");
-      }
+        if(navigator.userAgent.includes("Chrome")){
+
+        }else{
+        alert("Safari or iPad detected!\n\nIf you are using a Mac:\nPlease ensure to allow all pop-up windows for the site to work correctly. Using Chrome or Firefox is highly recommended.\n\nIf you are using an iPad:\nThis site is known to be broken on the iOS version of Safari, Firefox and Opera. Please visit using Chrome, Edge or Opera GX. Compatibility with browsers other than Chrome, Edge and Opera GX is unknown.");
+      }}
         if (navigator.userAgent.includes("CriOS")){ //Detects Chrome and doesn't show error pop-up
         } else if (navigator.userAgent.includes("EdgiOS")){ //Detects Edge and doesn't show error pop-up
         }else if(navigator.userAgent.includes("OPX/")){ //Detects Opera GX and doesn't show error pop-up
@@ -55,9 +58,9 @@
   </script>
   <div style="display: flex; justify-content: space-between;">
   <span><h2><a href="index.htm">&lt; Back</a></h2></span>
-  <span><h2><a href="osurandomizer/osu%21randomizer%20%28Turbowarp%20Only%29.sb3">Download source</a></h2></span>
+  <span><h2><a href="osu!randomiser(TurbowarpOnly).sb3">Download source</a></h2></span>
 </div>
-  <iframe src="osurandomizer/index.html" allowfullscreen></iframe>
+  <iframe src="osu%20randomiser%20internal.html" allowfullscreen></iframe>
 </body>
 </html>
 
