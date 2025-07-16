@@ -1,0 +1,133 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-gb">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style>
+@font-face {
+  font-family: 'FranklinGothic';
+  src: url('./fonts/FranklinGothic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FranklinGothicItalics';
+	src: url('./fonts/FranklinGothicITALIC.ttf');}
+body {
+  font-family: 'FranklinGothic', sans-serif;
+  color: white;
+}
+a {
+      color: palegreen;
+    }
+
+    a:visited {
+      color: palegreen;
+    }
+
+    a:hover {
+      color: orange;
+    }
+
+    a:active {
+      color: red;
+    }
+.bodyclass {
+      transition: transform 0.3s ease;
+      margin: 50px auto;
+      font-size:18px;
+    }
+.scaled {
+      transform: scale(0.55); 
+	  transform-origin: top center;
+    font-size:40px;
+    }
+ body {
+      background: radial-gradient(circle, #560dfc, #7d00ff);
+      
+    }
+</style>
+<title>WoodcraftWorld Download Centre - &#47;</title>
+</head>
+
+<body>
+
+
+<div align="center">
+<table class="bodyclass" border="0" width="80%">
+	<tr>
+		<td><center><a href="../index.htm"><img border="0" src="../images/logohome.png" width="40%" alt="WoodcraftWorld Logo & Home button"></a></center></td>	
+	</tr>
+	<tr>
+		<td><center><img border="0" src="../images/downloadcentre.png" width="50%" alt="Download Centre"></center></td>
+	</tr>
+  
+	<tr>
+		<td>
+		<!--Content-->
+    <center>
+      <br />
+      <h2>WoodcraftWorld osu&excl;lazer skins.</h2>
+      <p>Skins may work in Stable&comma; but make extensive use of lazer&#39;s layout editor&#46;</p>
+      <table width="100%" height="100%">
+        <tr>
+          <td><center><h2>WoodcraftWorld v2 based on XooMoon</h2></center></td>
+        </tr>
+        <tr>
+          <td><center><iframe width="100%" height="640" src="https://mega.nz/embed/ikB2zLaL#c6Se9Blfg7yBo6V3XcJiXaaJcmr5iQ6OmTCBcXnLk5g" title="Mega.nz video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></center></td>
+        </tr>
+        <tr>
+          <td><center><h2><a href="https://mega.nz/file/blh1DBAQ#XdkCWhJaLnQjtDRb7-btVDD5j67_lfgOABVo_pZtD1w">Download skin</a><br /><a href="https://skins.osuck.net/skins/2530?v=0">Download original</a></h2></center></td>
+        </tr>
+      </table>
+      <table width="100%" height="100%">
+        <tr>
+          <td><center><h2>WoodcraftWorld v1 based on WhiteCat 1&#46;0</h2></center></td>
+        </tr>
+        <tr>
+          <td><center><iframe width="100%" height="640" src="https://mega.nz/embed/bhhxzQjA#C-KW5fdoffzK0ttghz8ieSyWsW1KZAFGq7RF4VVNT8o" title="Mega.nz video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></center></td>
+        </tr>
+        <tr>
+          <td><center><h2><a href="https://mega.nz/file/y5YXSRba#V04DiYouU427UF1SzvMYStMbugeT0dK4jnxWrVoJf2A">Download skin</a><br /><a href="https://skins.osuck.net/skins/1107?v=0">Download original</a></h2></center></td>
+        </tr>
+      </table>
+    <br />
+    <a href="index.htm">&lt Back</a>
+    </center>
+		</td>
+	</tr>
+  
+</table>
+
+</div>
+
+</body>
+ <script>
+    function checkOrientation() {
+      const target = document.querySelector('.bodyclass');
+      
+      if (window.innerWidth-100 > window.innerHeight) {
+        target.classList.add('scaled');
+        
+      } else {
+        target.classList.remove('scaled');
+        
+      }
+    }
+
+    // Initial check
+    checkOrientation();
+
+    // Re-check on window resize
+    window.addEventListener('resize', checkOrientation);
+    const images = [
+      'images/ytbanner.png',
+      'images/vtuber.png',
+      'images/mii.png'
+    ];
+
+    window.onload = function () {
+      const randomIndex = Math.floor(Math.random() * images.length);
+      const selectedImage = images[randomIndex];
+      document.getElementById('mainimage').src = selectedImage;
+    };
+  </script>
+</html>

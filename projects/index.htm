@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-gb">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style>
+@font-face {
+  font-family: 'FranklinGothic';
+  src: url('./fonts/FranklinGothic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FranklinGothicItalics';
+	src: url('./fonts/FranklinGothicITALIC.ttf');}
+body {
+  font-family: 'FranklinGothic', sans-serif;
+  color: white;
+}
+.bodyclass {
+      transition: transform 0.3s ease;
+      margin: 50px auto;
+    }
+.scaled {
+      transform: scale(1.2); /* adjust scale as needed */
+	  transform-origin: top center;
+    }
+
+
+ body {
+      background: radial-gradient(circle, #560dfc, #7d00ff);
+      /* You can change the direction and colors */
+    }
+</style>
+<title>WoodcraftWorld Projects</title>
+</head>
+
+<body>
+
+
+<div align="center">
+<table class="bodyclass" border="0" width="80%">
+	<tr>
+		<td><center><a href="../index.htm"><img border="0" src="../images/logohome.png" width="40%" alt="WoodcraftWorld Logo & Home button"></a></center></td>	
+	</tr>
+	<tr>
+    <td>
+      <center>
+    <table border="0" width="100%">
+      <tr>
+		    <td id="mainimagetd"><center><img border="0" id="mainimage" alt="Main image"></center></td>
+        <td id="horiz">
+                  <a href="osurandomiser.htm"><img width="100%" src="../images/buttons/osurandomiser.png" alt="osu!randomiser"></a><br />
+                  <a href="piinetradio.htm"><img width="100%" src="../images/buttons/piinetradio.png" alt="Raspberry Pi Internet Radio"></a><br />
+                  <a href="xp-simulator.htm"><img width="100%"  src="../images/buttons/xpsim.png" class="ytbanner" alt="Windows XP Simulator"></a><br />
+                  <a href="mcpegens.htm"><img width="100%" src="../images/buttons/cmdgens.png" class="mii" alt="Bedrock command generators"></a><br />
+                  <a href="1drv_rename.htm"><img width="100%" src="../images/buttons/1drv_rename.png" class="vtuber" alt="OneDrive rename tool"></a><br />
+                  <a href="xpskin.html"><img width="100%" src="../images/buttons/xpskin.png" class="ytbanner" alt="YouTube Random Videos"></a><br />
+                  <a href="minecraft/index.htm"><img width="100%" src="../images/buttons/minecraft.png" class="ytbanner" alt="Website"></a><br />
+              
+        </td>
+      </tr>
+    </table></center></td>
+	</tr>
+	<tr><td>
+    <table>
+    <tr>
+      <td>
+      <div id="vert" wid>
+          <a href="osurandomiser.htm"><img width="100%" src="../images/buttons/osurandomiser.png" alt="osu!randomiser"></a><br />
+          <a href="piinetradio.htm"><img width="100%" src="../images/buttons/piinetradio.png" alt="Raspberry Pi Internet Radio"></a><br />
+                  <a href="xp-simulator.htm"><img width="100%" src="../images/buttons/xpsim.png" class="ytbanner" alt="Windows XP Simulator"></a><br />
+                  <a href="mcpegens.htm"><img width="100%" src="../images/buttons/cmdgens.png" class="mii" alt="Bedrock command generators"></a><br />
+                  <a href="1drv_rename.htm"><img width="100%" src="../images/buttons/1drv_rename.png" class="vtuber" alt="OneDrive rename tool"></a><br />
+                  <a href="xpskin.html"><img width="100%" src="../images/buttons/xpskin.png" class="ytbanner" alt="Windows XP Skin for Windows 7-10"></a><br />
+                  <a href="minecraft/index.htm"><img width="100%" src="../images/buttons/minecraft.png" class="ytbanner" alt="Minecraft Projects"></a><br />
+                  
+      </div></td>
+      
+      </tr>
+    </table>
+		</td>
+    <td>&nbsp;</td>
+	</tr>
+  
+</table>
+</div>
+
+</body>
+ <script>
+    function checkOrientation() {
+      
+      const target = document.querySelector('.bodyclass');
+      if (window.innerWidth-100 > window.innerHeight) {
+        target.classList.add('scaled');
+        var vert = document.getElementById("vert");
+        var horiz = document.getElementById("horiz");
+        var mainimage = document.getElementById("mainimage");
+        vert.style.width = "0px";
+        horiz.style.width="50%";
+        mainimage.style.width="100%";
+         
+      } else {
+        target.classList.remove('scaled');
+        var vert = document.getElementById("vert");
+        var horiz = document.getElementById("horiz");
+        var mainimage = document.getElementById("mainimage");
+        vert.style.width = "100%";
+        if (navigator.userAgent.includes("Safari")){
+          horiz.style.width="1px";
+        } else {
+          horiz.style.width="0px";
+        }
+        mainimage.style.width="60%";
+        
+      }
+    }
+
+    // Initial check
+    checkOrientation();
+
+    // Re-check on window resize
+    window.addEventListener('resize', checkOrientation);
+    const images = [
+      '../images/ytbanner.png',
+      '../images/vtuber.png',
+      '../images/mii.png'
+    ];
+    
+    window.onload = function () {
+      const randomIndex = Math.floor(Math.random() * images.length);
+      const selectedImage = images[0];
+      document.getElementById('mainimage').src = selectedImage;
+    };
+  </script>
+</html>

@@ -1,0 +1,105 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-gb">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style>
+@font-face {
+  font-family: 'FranklinGothic';
+  src: url('../fonts/FranklinGothic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FranklinGothicItalics';
+	src: url('../fonts/FranklinGothicITALIC.ttf');}
+body {
+  font-family: 'FranklinGothic', sans-serif;
+  color: white;
+}
+a {
+      color: palegreen;
+    }
+
+    a:visited {
+      color: palegreen; /* visited */
+    }
+
+    a:hover {
+      color: orange;
+    }
+
+    a:active {
+      color: red;
+    }
+.bodyclass {
+      transition: transform 0.3s ease;
+      margin: 50px auto;
+      font-size:18px;
+    }
+.scaled {
+      transform: scale(0.55); 
+	  transform-origin: top center;
+    font-size:40px;
+    }
+ body {
+      background: radial-gradient(circle, #560dfc, #7d00ff);
+      
+    }
+</style>
+<title>HDV Camera Repair</title>
+</head>
+
+<body>
+
+
+<div align="center">
+<table class="bodyclass" border="0" width="90%">
+	<tr>
+		<td><center><a href="../index.htm"><img border="0" src="../images/logohome.png" width="60%" alt="WoodcraftWorld Logo"></a></center></td>	
+	</tr>
+  <tr><td><center><h3><a href="index.htm">&lt; Back</a></h3></td></tr></center></tr>
+	<tr>
+		<td><center><img border="0" src="../images/buttons/hdvcamlogo.png" width="90%" alt="Main image"></center></td>
+	</tr>
+	<tr>
+		<td>
+      <center>
+      <h2><a href="https://www.aliexpress.com/item/1005007261421871.html">Buy the LCD flat cable</a></h2>
+      <h1>Video:</h1>
+      <iframe id="videoplayer" src="https://www.youtube.com/embed/qo38YKRuLJo?si=yiU3m6bQN-mgYk6Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <h1>Hi-res images:</h1>
+      <a href="../images/hdvcam/board_pic_1.jpg"><img width="100%" src="../images/hdvcam/board_pic_1.jpg"></a><br />
+      <a href="../images/hdvcam/board_pic_2.jpg"><img width="100%" src="../images/hdvcam/board_pic_2.jpg"></a><br />
+      <a href="../images/hdvcam/sticker_pic.jpg"><img width="100%" src="../images/hdvcam/sticker_pic.jpg"></a><br />
+
+      </center>
+    </td>
+	</tr>
+  
+</table>
+
+</div>
+
+</body>
+ <script>
+    function checkOrientation() {
+      const target = document.querySelector('.bodyclass');
+      
+      if (window.innerWidth-100 > window.innerHeight) {
+        target.classList.add('scaled');
+        document.getElementById('videoplayer').style.height="720px";
+        document.getElementById('videoplayer').style.width="80%";
+      } else {
+        target.classList.remove('scaled');
+        document.getElementById('videoplayer').style.height="240px";
+        document.getElementById('videoplayer').style.width="100%";
+      }
+    }
+
+    // Initial check
+    checkOrientation();
+
+    // Re-check on window resize
+    window.addEventListener('resize', checkOrientation);
+    
+  </script>
+</html>

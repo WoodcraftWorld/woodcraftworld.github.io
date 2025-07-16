@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-gb">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style>
+@font-face {
+  font-family: 'FranklinGothic';
+  src: url('./fonts/FranklinGothic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FranklinGothicItalics';
+	src: url('./fonts/FranklinGothicITALIC.ttf');}
+body {
+  font-family: 'FranklinGothic', sans-serif;
+  color: white;
+}
+.bodyclass {
+      transition: transform 0.3s ease;
+      margin: 50px auto;
+    }
+.scaled {
+      transform: scale(1.2); /* adjust scale as needed */
+	  transform-origin: top center;
+    }
+ body {
+      background: radial-gradient(circle, #560dfc, #7d00ff);
+      /* You can change the direction and colors */
+    }
+</style>
+<title>WoodcraftWorld Social Media</title>
+</head>
+
+<body>
+
+
+<div align="center">
+<table class="bodyclass" border="0" width="80%">
+	<tr>
+		<td><center><a href="index.htm"><img border="0" src="images/logohome.png" width="40%" alt="WoodcraftWorld Logo & Home button"></a></center></td>	
+	</tr>
+	<tr>
+    <td>
+    <table border="0" width="100%">
+      <tr>
+		    <td id="mainimagetd"><center><img border="0" id="mainimage" alt="Main image"></center></td>
+        <td id="horiz" width="50%">
+          <table>
+            <tr>
+              <td>
+                  <a href="https://twitch.tv/woodcraftworldtv"><img width="100%" src="images/buttons/medias/TwitchStreams.png" class="vtuber" alt="Twitch live streams"></a>
+                  <a href="https://youtube.com/@woodcraftworld"><img width="100%" src="images/buttons/medias/YtTechVids.png" class="ytbanner" alt="YouTube Tech Videos"></a>
+                  <a href="https://woodcraftworld.bsky.social"><img width="100%" src="images/buttons/medias/BskySocial.png" class="mii" alt="BlueSky"></a>
+                  <a href="https://youtube.com/@woodcrafttvtwitchvods-s1n"><img width="100%" src="images/buttons/medias/TwitchStreamVods.png" class="vtuber" alt="Twitch live Stream Archive"></a>
+              </td>
+              <td>
+                <a href="https://youtube.com/@max4600"><img width="100%" src="images/buttons/medias/YtRandomVids.png" class="ytbanner" alt="YouTube Random Videos"></a>
+                <a href="index.htm"><img width="100%" src="images/buttons/medias/http.png" class="ytbanner" alt="Website"></a>
+                <a href="https://x.com/max46001"><img width="100%" src="images/buttons/medias/XdotCom.png" class="mii" alt="X (formerly Twitter)"></a>
+                <a href="mailto:woodcraftworld_msg@yahoo.com"><img width="100%" src="images/buttons/medias/mailme.png" class="ytbanner" alt="Send an email to woodcraftworld_msg@yahoo.com"></a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table></td>
+	</tr>
+	<tr><td>
+    <table>
+    <tr>
+      <td>
+      <center><div id="vert" width="70%">
+          <a href="https://twitch.tv/woodcraftworldtv"><img width="100%" src="images/buttons/medias/TwitchStreams.png" class="vtuber" alt="Twitch live streams"></a>
+          <a href="https://youtube.com/@woodcraftworld"><img width="100%" src="images/buttons/medias/YtTechVids.png" class="ytbanner" alt="YouTube Tech Videos"></a>
+          <a href="https://woodcraftworld.bsky.social"><img width="100%" src="images/buttons/medias/BskySocial.png" class="mii" alt="BlueSky"></a>
+          <a href="https://youtube.com/@woodcrafttvtwitchvods-s1n"><img width="100%" src="images/buttons/medias/TwitchStreamVods.png" class="vtuber" alt="Twitch live Stream Archive"></a>
+          <a href="https://youtube.com/@max4600"><img width="100%" src="images/buttons/medias/YtRandomVids.png" class="ytbanner" alt="YouTube Random Videos"></a>
+          <a href="index.htm"><img width="100%" src="images/buttons/medias/http.png" class="ytbanner" alt="Website"></a>
+          <a href="https://x.com/max46001"><img width="100%" src="images/buttons/medias/XdotCom.png" class="mii" alt="X (formerly Twitter)"></a>
+          <a href="mailto:woodcraftworld_msg@yahoo.com"><img width="100%" src="images/buttons/medias/mailme.png" class="ytbanner" alt="Send an email to woodcraftworld_msg@yahoo.com"></a>
+      </div></center></td>
+      
+      </tr>
+    </table>
+		</td>
+    <td>&nbsp;</td>
+	</tr>
+</table>
+
+</div>
+
+</body>
+ <script>
+    function checkOrientation() {
+      const target = document.querySelector('.bodyclass');
+      if (window.innerWidth-100 > window.innerHeight) {
+        target.classList.add('scaled');
+        var vert = document.getElementById("vert");
+        var horiz = document.getElementById("horiz");
+        var mainimage = document.getElementById("mainimage");
+        vert.style.width = "0px";
+        horiz.style.width="60%";
+        mainimage.style.width="100%";
+      } else {
+        target.classList.remove('scaled');
+        var vert = document.getElementById("vert");
+        var horiz = document.getElementById("horiz");
+        var mainimage = document.getElementById("mainimage");
+        vert.style.width = "100%";
+        if (navigator.userAgent.includes("Safari")){
+          horiz.style.width="1px";
+        } else {
+          horiz.style.width="0px";
+        }
+        mainimage.style.width="60%";
+      }
+    }
+
+    // Initial check
+    checkOrientation();
+
+    // Re-check on window resize
+    window.addEventListener('resize', checkOrientation);
+    const images = [
+      'images/ytbanner.png',
+      'images/vtuber.png',
+      'images/mii.png'
+    ];
+    
+    window.onload = function () {
+      const randomIndex = Math.floor(Math.random() * images.length);
+      const selectedImage = images[randomIndex];
+      document.getElementById('mainimage').src = selectedImage;
+    };
+    document.querySelectorAll(".vtuber").forEach((img) =>{
+      img.addEventListener("mouseover", () => {
+      document.getElementById('mainimage').src = "images/vtuber.png";
+    });
+    });
+    document.querySelectorAll(".ytbanner").forEach((img) =>{
+      img.addEventListener("mouseover", () => {
+      document.getElementById('mainimage').src = "images/ytbanner.png";
+    });
+    });
+    document.querySelectorAll(".mii").forEach((img) =>{
+      img.addEventListener("mouseover", () => {
+      document.getElementById('mainimage').src = "images/mii.png";
+    });
+    });
+  </script>
+</html>

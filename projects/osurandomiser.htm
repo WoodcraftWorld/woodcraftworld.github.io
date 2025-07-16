@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>osu!randomizer</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      
+    }
+    body {
+      background: radial-gradient(circle, #560dfc, #7d00ff);
+      /* You can change the direction and colors */
+    }
+    a {
+      color: palegreen;
+    }
+
+    a:visited {
+      color: palegreen; /* visited */
+    }
+
+    a:hover {
+      color: orange;
+    }
+
+    a:active {
+      color: red;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    if(navigator.userAgent.includes("Safari")){
+      if (navigator.userAgent.includes("Macintosh")){
+        if(navigator.userAgent.includes("Chrome")){
+
+        }else{
+        alert("Safari or iPad detected!\n\nIf you are using a Mac:\nPlease ensure to allow all pop-up windows for the site to work correctly. Using Chrome or Firefox is highly recommended.\n\nIf you are using an iPad:\nThis site is known to be broken on the iOS version of Safari, Firefox and Opera. Please visit using Chrome, Edge or Opera GX. Compatibility with browsers other than Chrome, Edge and Opera GX is unknown.");
+      }}
+        if (navigator.userAgent.includes("CriOS")){ //Detects Chrome and doesn't show error pop-up
+        } else if (navigator.userAgent.includes("EdgiOS")){ //Detects Edge and doesn't show error pop-up
+        }else if(navigator.userAgent.includes("OPX/")){ //Detects Opera GX and doesn't show error pop-up
+        //NOTE Opera NON GX useragent code (for iOS) is OPT/
+        } else if (!navigator.userAgent.includes("Macintosh")){
+        alert("Incompatible iOS browser detected!\n\nThis site is known to be broken on the iOS version of Safari, Firefox and Opera. Please visit using Chrome, Edge or Opera GX. Compatibility with browsers other than Chrome, Edge and Opera GX is unknown.");
+        }
+      
+    }
+  </script>
+  <div style="display: flex; justify-content: space-between;">
+  <span><h2><a href="index.htm">&lt; Back</a></h2></span>
+  <span><h2><a href="osu!randomiser(TurbowarpOnly).sb3">Download source</a></h2></span>
+</div>
+  <iframe src="osu%20randomiser%20internal.html" allowfullscreen></iframe>
+</body>
+</html>
+
