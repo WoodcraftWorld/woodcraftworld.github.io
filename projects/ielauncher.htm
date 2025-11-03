@@ -40,6 +40,11 @@ a {
 	  transform-origin: top center;
     font-size:40px;
     }
+.scalediframe {
+  transform: scale(1.818); 
+  transform-origin: top center;
+  
+}
  body {
       background: radial-gradient(circle, #560dfc, #7d00ff);
       
@@ -63,7 +68,7 @@ a {
 	<tr>
 		<td>
       <center>
-      <iframe width="1024" height="480" src="/InternetExplorerLauncher/index.htm"></iframe>
+      <iframe class="iFrameClass" width="1024" height="480" src="/InternetExplorerLauncher/index.htm"></iframe>
       </center>
     </td>
 	</tr>
@@ -76,13 +81,15 @@ a {
  <script>
     function checkOrientation() {
       const target = document.querySelector('.bodyclass');
-      
+      const iFrames=document.querySelector('.iFrameClass');
       if (window.innerWidth-100 > window.innerHeight) {
         target.classList.add('scaled');
+        iFrames.classList.add('scalediframe');
         document.getElementById('videoplayer').style.height="720px";
         document.getElementById('videoplayer').style.width="80%";
       } else {
         target.classList.remove('scaled');
+        iFrames.classList.remove('scalediframe');
         document.getElementById('videoplayer').style.height="240px";
         document.getElementById('videoplayer').style.width="100%";
       }
