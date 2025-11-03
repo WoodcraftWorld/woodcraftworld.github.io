@@ -1,0 +1,98 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-gb">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style>
+@font-face {
+  font-family: 'FranklinGothic';
+  src: url('../fonts/FranklinGothic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'FranklinGothicItalics';
+	src: url('../fonts/FranklinGothicITALIC.ttf');}
+body {
+  font-family: 'FranklinGothic', sans-serif;
+  color: white;
+}
+a {
+      color: palegreen;
+    }
+
+    a:visited {
+      color: palegreen; /* visited */
+    }
+
+    a:hover {
+      color: orange;
+    }
+
+    a:active {
+      color: red;
+    }
+.bodyclass {
+      transition: transform 0.3s ease;
+      margin: 50px auto;
+      font-size:18px;
+    }
+.scaled {
+      transform: scale(0.55); 
+	  transform-origin: top center;
+    font-size:40px;
+    }
+ body {
+      background: radial-gradient(circle, #560dfc, #7d00ff);
+      
+    }
+</style>
+<title>Internet Explorer Launcher</title>
+</head>
+
+<body>
+
+
+<div align="center">
+<table class="bodyclass" border="0" width="90%">
+	<tr>
+		<td><center><a href="../index.htm"><img border="0" src="../images/logohome.png" width="60%" alt="WoodcraftWorld Logo"></a></center></td>	
+	</tr>
+  <tr><td><center><h3><a href="index.htm">&lt; Back</a></h3></td></tr></center></tr>
+	<tr>
+	<!--	<td><center><img border="0" src="../images/buttons/keyboardtabletdriverlogo.png" width="90%" alt="Main image"></center></td> -->
+	</tr>
+	<tr>
+		<td>
+      <center>
+      <iframe width="1024" height="480" src="/InternetExplorerLauncher/index.htm"
+      </center>
+    </td>
+	</tr>
+  
+</table>
+
+</div>
+
+</body>
+ <script>
+    function checkOrientation() {
+      const target = document.querySelector('.bodyclass');
+      
+      if (window.innerWidth-100 > window.innerHeight) {
+        target.classList.add('scaled');
+        document.getElementById('videoplayer').style.height="720px";
+        document.getElementById('videoplayer').style.width="80%";
+      } else {
+        target.classList.remove('scaled');
+        document.getElementById('videoplayer').style.height="240px";
+        document.getElementById('videoplayer').style.width="100%";
+      }
+    }
+
+    // Initial check
+    checkOrientation();
+
+    // Re-check on window resize
+    window.addEventListener('resize', checkOrientation);
+    
+  </script>
+</html>
