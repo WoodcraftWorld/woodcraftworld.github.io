@@ -58,7 +58,7 @@ body {
                 <a href="https://youtube.com/@max4600"><img width="100%" src="images/buttons/medias/YtRandomVids.png" class="ytbanner" alt="YouTube Random Videos"></a>
                 <a href="index.htm"><img width="100%" src="images/buttons/medias/http.png" class="ytbanner" alt="Website"></a>
                 <a href="https://x.com/max46001"><img width="100%" src="images/buttons/medias/XdotCom.png" class="mii" alt="X (formerly Twitter)"></a>
-                <a href="mailto:woodcraft0912@gmail.com"><img width="100%" src="images/buttons/medias/mailme.png" class="ytbanner" alt="Send an email to woodcraft0912@gmail.com"></a>
+                <a href="mailto:woodcraft0912@gmail.com" id="sendmail"><img width="100%" src="images/buttons/medias/mailme.png" class="ytbanner" alt="Send an email to woodcraft0912@gmail.com"></a>
               </td>
             </tr>
           </table>
@@ -78,7 +78,7 @@ body {
           <a href="https://youtube.com/@max4600"><img width="100%" src="images/buttons/medias/YtRandomVids.png" class="ytbanner" alt="YouTube Random Videos"></a>
           <a href="index.htm"><img width="100%" src="images/buttons/medias/http.png" class="ytbanner" alt="Website"></a>
           <a href="https://x.com/max46001"><img width="100%" src="images/buttons/medias/XdotCom.png" class="mii" alt="X (formerly Twitter)"></a>
-          <a href="mailto:woodcraft0912@gmail.com"><img width="100%" src="images/buttons/medias/mailme.png" class="ytbanner" alt="Send an email to woodcraft0912@gmail.com"></a>
+          <a href="mailto:woodcraft0912@gmail.com" id="sendmail"><img width="100%" src="images/buttons/medias/mailme.png" class="ytbanner" alt="Send an email to woodcraft0912@gmail.com"></a>
       </div></center></td>
       
       </tr>
@@ -148,5 +148,10 @@ body {
       document.getElementById('mainimage').src = "images/mii.png";
     });
     });
+    document.getElementById("sendmail").addEventListener("click", function(e) {
+    if (!confirm("This will create a new e-mail to woodcraft0912@gmail.com in your default email client. Are you sure you want to proceed?")) {
+      e.preventDefault();
+    }
+  });
   </script>
 </html>
