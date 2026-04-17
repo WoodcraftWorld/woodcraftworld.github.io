@@ -49,15 +49,15 @@ body {
       <tr>
 		    <td id="mainimagetd"><center><img border="0" id="mainimage" alt="Main image"></center></td>
         <td id="horiz">
-                  <a href="keyboardtabletdriver.htm"><img width="100%" src="../images/buttons/keyboardtabletdriver.png" alt="Keyboard Tablet Driver"></a><br /> 
+                  <a href="keyboardtabletdriver.htm"><img width="100%" src="../images/buttons/keyboardtabletdriver.png" alt="Keyboard Tablet Driver"></a><br />
                   <a href="osurandomiser.htm"><img width="100%" src="../images/buttons/osurandomiser.png" alt="osu!randomiser"></a><br />
-                  <a href="piinetradio.htm"><img width="100%" src="../images/buttons/piinetradio.png" alt="Raspberry Pi Internet Radio"></a><br />
-                  <a href="xp-simulator.htm"><img width="100%"  src="../images/buttons/xpsim.png" class="ytbanner" alt="Windows XP Simulator"></a><br />
-                  <a href="mcpegens.htm"><img width="100%" src="../images/buttons/cmdgens.png" class="mii" alt="Bedrock command generators"></a><br />
-                  <a href="1drv_rename.htm"><img width="100%" src="../images/buttons/1drv_rename.png" class="vtuber" alt="OneDrive rename tool"></a><br />
-                  <a href="xpskin.html"><img width="100%" src="../images/buttons/xpskin.png" class="ytbanner" alt="Windows XP Skin for Windows 7-10"></a><br />
-                  <a href="minecraft/index.htm"><img width="100%" src="../images/buttons/minecraft.png" class="ytbanner" alt="Minecraft Projects"></a><br />
-                  <a href="thearchive.htm"><img width="100%" src="../images/buttons/thearchive.png" class="ytbanner" alt="The Old Archive"></a><br />
+                  <a href="piinetradio.htm"><img width="100%" src="../images/buttons/piinetradio.png" class="notsoftware" alt="Raspberry Pi Internet Radio"></a><br />
+                  <a href="xp-simulator.htm"><img width="100%" src="../images/buttons/xpsim.png" alt="Windows XP Simulator"></a><br />
+                  <a href="mcpegens.htm"><img width="100%" src="../images/buttons/cmdgens.png" alt="Bedrock command generators"></a><br />
+                  <a href="1drv_rename.htm"><img width="100%" src="../images/buttons/1drv_rename.png" alt="OneDrive rename tool"></a><br />
+                  <a href="xpskin.html"><img width="100%" src="../images/buttons/xpskin.png" class="notsoftware" alt="Windows XP Skin for Windows 7-10"></a><br />
+                  <a href="minecraft/index.htm"><img width="100%" src="../images/buttons/minecraft.png" class="notsoftware" alt="Minecraft Projects"></a><br />
+                  <a href="thearchive.htm"><img width="100%" src="../images/buttons/thearchive.png" class="notsoftware" alt="The Old Archive"></a><br />
         </td>
       </tr>
     </table></center></td>
@@ -69,13 +69,13 @@ body {
       <div id="vert" wid>
         <a href="keyboardtabletdriver.htm"><img width="100%" src="../images/buttons/keyboardtabletdriver.png" alt="Keyboard Tablet Driver"></a><br />
           <a href="osurandomiser.htm"><img width="100%" src="../images/buttons/osurandomiser.png" alt="osu!randomiser"></a><br />
-          <a href="piinetradio.htm"><img width="100%" src="../images/buttons/piinetradio.png" alt="Raspberry Pi Internet Radio"></a><br />
-                  <a href="xp-simulator.htm"><img width="100%" src="../images/buttons/xpsim.png" class="ytbanner" alt="Windows XP Simulator"></a><br />
-                  <a href="mcpegens.htm"><img width="100%" src="../images/buttons/cmdgens.png" class="mii" alt="Bedrock command generators"></a><br />
-                  <a href="1drv_rename.htm"><img width="100%" src="../images/buttons/1drv_rename.png" class="vtuber" alt="OneDrive rename tool"></a><br />
-                  <a href="xpskin.html"><img width="100%" src="../images/buttons/xpskin.png" class="ytbanner" alt="Windows XP Skin for Windows 7-10"></a><br />
-                  <a href="minecraft/index.htm"><img width="100%" src="../images/buttons/minecraft.png" class="ytbanner" alt="Minecraft Projects"></a><br />
-                  <a href="thearchive.htm"><img width="100%" src="../images/buttons/thearchive.png" class="ytbanner" alt="The Old Archive"></a><br />
+          <a href="piinetradio.htm"><img width="100%" src="../images/buttons/piinetradio.png" class="notsoftware" alt="Raspberry Pi Internet Radio"></a><br />
+                  <a href="xp-simulator.htm"><img width="100%" src="../images/buttons/xpsim.png" alt="Windows XP Simulator"></a><br />
+                  <a href="mcpegens.htm"><img width="100%" src="../images/buttons/cmdgens.png" alt="Bedrock command generators"></a><br />
+                  <a href="1drv_rename.htm"><img width="100%" src="../images/buttons/1drv_rename.png" alt="OneDrive rename tool"></a><br />
+                  <a href="xpskin.html"><img width="100%" src="../images/buttons/xpskin.png" class="notsoftware" alt="Windows XP Skin for Windows 7-10"></a><br />
+                  <a href="minecraft/index.htm"><img width="100%" src="../images/buttons/minecraft.png" class="notsoftware" alt="Minecraft Projects"></a><br />
+                  <a href="thearchive.htm"><img width="100%" src="../images/buttons/thearchive.png" class="notsoftware" alt="The Old Archive"></a><br />
       </div></td>
       
       </tr>
@@ -132,6 +132,14 @@ body {
       const randomIndex = Math.floor(Math.random() * images.length);
       const selectedImage = images[0];
       document.getElementById('mainimage').src = selectedImage;
+      const allLinks = document.querySelectorAll('.notsoftware');
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const myParam = urlParams.get('showonlysoftware');
+      if(myParam=="true"){
+      allLinks.forEach(item => {
+        item.remove();
+      });}
     };
   </script>
 </html>
