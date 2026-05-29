@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>W7frame</title>
+    <style>
+        table {
+    border-collapse: collapse; /* Merges cell borders */
+    border-spacing: 0;
+}
+
+td {
+    padding: 0;
+    line-height: 0;   /* Removes space reserved for text descenders */
+    font-size: 0;     /* Extra insurance against white-space gaps */
+    vertical-align: top; 
+}
+
+img {
+    display: block;   /* You've already got this, keep it! */
+    margin: 0;
+}
+    </style>
+</head>
+<body>
+    <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <td colspan="3">
+            <img src="top.png" width="1016px" height="59px">
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <img src="left.png" width="26px" height="540px">
+        </td>
+        <td>
+            <iframe id="dynamic-iframe" width="960px" height="540px" style="border: none;"></iframe>
+        </td>
+        <td>
+            <img src="right.png" width="30px" height="540px">
+        </td>
+    </tr>
+    
+    <tr>
+        <td colspan="3">
+            <img src="bottom.png" width="1016px" height="30px">
+        </td>
+    </tr>
+</table>
+
+    <script>
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        const page = urlParams.get('page');
+        if (page) {
+            document.getElementById('dynamic-iframe').src = "https://woodcraftsocials.rf.gd/tv/php/"+page+".php";
+        } else {
+            console.log("No page parameter provided in the URL.");
+        }
+    </script>
+
+</body>
+</html>
