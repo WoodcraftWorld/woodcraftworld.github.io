@@ -44,6 +44,18 @@ function getIconUrl(fileName, isDir) {
         case 'apk':  return 'apk.ico';
         case 'ipa':  return 'ipa.ico';
         case 'swf':  return 'swf.ico';
+        case 'stl':  return '3d.ico';
+        case 'glb':  return '3d.ico';
+        case 'obj':  return '3d.ico';
+        case 'blend':return '3d.ico';
+        case 'osk':  return 'osu.ico';
+        case 'osr':  return 'osu.ico';
+        case 'osz':  return 'osu.ico';
+        case 'olz':  return 'osu.ico';
+        case 'mcworld': return 'minecraft.ico';
+        case 'mcpack':  return 'minecraft.ico';
+        case 'mcaddon': return 'minecraft.ico';
+        case 'torrent': return 'torrent.ico';
         default:     return 'unknown.ico';
     }
 }
