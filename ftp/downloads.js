@@ -52,6 +52,7 @@ function getIconUrl(fileName, isDir) {
         case 'osr':  return 'osu.ico';
         case 'osz':  return 'osu.ico';
         case 'olz':  return 'osu.ico';
+        case '3gp':  return 'video.ico';
         case 'mcworld': return 'minecraft.ico';
         case 'mcpack':  return 'minecraft.ico';
         case 'mcaddon': return 'minecraft.ico';
