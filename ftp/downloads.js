@@ -12,14 +12,25 @@ function initPathFromUrl() {
     const pathParam = params.get('path');
     if (pathParam) {
         currentPath = pathParam;
+        setFolderText(currentPath)
+    } else {
+        setFolderText()
     }
 }
 function updateUrlPath() {
     const params = new URLSearchParams(window.location.search);
     params.set('path', currentPath);
     window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+    setFolderText(currentPath)
 }
-
+function setFolderText(newpath='/'){
+    if (newpath == '/' || !newpath || newpath == ''){
+        document.getElementById("currentpath").innerText = "/";
+    } else {
+        document.getElementById("currentpath").innerText = "/"+newpath+"/";
+    }
+    
+}
 async function fetchRepoContents(path = '') {
     const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}`;
     
@@ -34,7 +45,7 @@ async function fetchRepoContents(path = '') {
 
 function renderFiles(files) {
     browserEl.innerHTML = '';
-    backBtn.style.display = currentPath ? 'block' : 'none';
+    backBtn.disabled = !currentPath;
     updateUrlPath();
 
     files.forEach(file => {
@@ -74,6 +85,10 @@ function renderFiles(files) {
 }
 
 backBtn.onclick = () => {
+    if (!currentPath) {
+        return;
+    }
+
     const pathParts = currentPath.split('/');
     pathParts.pop();
     currentPath = pathParts.join('/');

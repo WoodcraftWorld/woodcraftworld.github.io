@@ -42,6 +42,9 @@ function getIconUrl(fileName, isDir) {
         case 'zip':  return 'zip.ico';
         case '7z':   return 'zip.ico';
         case 'rar':  return 'zip.ico';
+        case 'gz':   return 'zip.ico';
+        case 'tar.gz':return'zip.ico';
+        case 'tar':  return 'zip.ico';
         case 'jpg':  return 'image.ico';
         case 'png':  return 'image.ico';
         case 'jpe':  return 'image.ico';
