@@ -14,7 +14,21 @@
         .folder-icon { color: #54aeff; }
         .file-icon { color: #57606a; }
         .file-name { color: #0969da; text-decoration: none; font-weight: 500; }
-        
+        a {
+      color: palegreen;
+    }
+
+    a:visited {
+      color: palegreen; /* visited */
+    }
+
+    a:hover {
+      color: orange;
+    }
+
+    a:active {
+      color: red;
+    }
         .back-btn { margin-bottom: 15px; cursor: pointer; color: #0969da; border: 1px solid #d0d7de; background: white; padding: 6px 12px; border-radius: 6px; font-weight: bold; }
         .back-btn:hover:not(:disabled) { background: #f3f4f6; }
         .back-btn:disabled { cursor: not-allowed; opacity: 0.6; }
@@ -51,8 +65,10 @@
         </div>
         <ul id="browser">
             </ul>
+        <center><h4><a href="other.htm">Legacy downloads</a></h4></center>
+        
     </div>
-
+    
     <script src="fileextensions.js"></script>
     <script src="downloads.js"></script>
 </body>

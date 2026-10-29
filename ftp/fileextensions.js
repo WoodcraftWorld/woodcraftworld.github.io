@@ -2,15 +2,8 @@ function getIconUrl(fileName, isDir) {
     if (isDir) return 'folder.ico';
 
     const extArr = fileName.split('.');
-    const extArr2 = extArr;
-    let ext=extArr2.pop().toLowerCase();
+    let ext=extArr.pop().toLowerCase();
     //alert(fileName+','+extArr.length+','+extArr[1]+','+ext);
-    if(extArr.length==2){
-        ext = extArr[1].toLowerCase();
-        //alert(1);
-    } else {
-        
-    }
     
     
     switch(ext) {
@@ -28,6 +21,7 @@ function getIconUrl(fileName, isDir) {
         case 'avi':  return 'video.ico';
         case 'ts' :  return 'video.ico';
         case 'mts':  return 'video.ico';
+        case 'webm': return 'video.ico';
         case 'mov':  return 'quicktime.ico';
         case 'aac':  return 'quicktime.ico';
         case 'm4v':  return 'quicktime.ico';
@@ -48,6 +42,7 @@ function getIconUrl(fileName, isDir) {
         case 'jpg':  return 'image.ico';
         case 'png':  return 'image.ico';
         case 'jpe':  return 'image.ico';
+        case 'gif':  return 'image.ico';
         case 'apk':  return 'apk.ico';
         case 'ipa':  return 'ipa.ico';
         case 'swf':  return 'swf.ico';

@@ -52,7 +52,15 @@ function renderFiles(files) {
         const li = document.createElement('li');
         const isDir = file.type === 'dir';
         const ext = file.name.split('.').pop().toLowerCase();
-        const iconSrc = getIconUrl(file.name, isDir);
+        let displayName = file.name;
+        const extArr = displayName.split('.');
+        if(extArr.length>2 && extArr[0] !==""){
+            displayName = displayName.replace(".html","");
+    } else {
+        
+    }
+        const iconSrc = getIconUrl(displayName, isDir);
+        
             li.innerHTML = `
             <span class="icon">
                 <img src="${iconSrc}" 
@@ -60,7 +68,7 @@ function renderFiles(files) {
                      height="32" 
                      onerror="this.src='unknown.ico';">
             </span>
-            <span class="file-name">${file.name}</span>
+            <span class="file-name">${displayName}</span>
         `;
         
         if(file.name == "external_page.html"){
