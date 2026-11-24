@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScreenCap Studio — Browser Screen Recorder</title>
+    <!-- Load Tailwind CSS for clean, modern, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+    <!-- Top Navigation / Header -->
+    <header class="border-b border-slate-800/80 bg-slate-900/50 backdrop-blur-md sticky top-0 z-10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight text-white">ScreenCap Studio</h1>
+                    <!--<p class="text-xs text-slate-400 hidden sm:block">Zero-install local browser screen capture</p>-->
+                </div>
+            </div>
+
+            <!-- Live Status Pill & Timer -->
+            <div class="flex items-center space-x-3 bg-slate-900 border border-slate-800 px-3.5 py-1.5 rounded-full shadow-inner">
+                <span id="statusDot" class="w-2.5 h-2.5 rounded-full bg-slate-500 transition-colors duration-300"></span>
+                <span id="statusText" class="text-xs font-medium text-slate-300 uppercase tracking-wider">Ready</span>
+                <span class="text-slate-700">|</span>
+                <span id="timerDisplay" class="font-mono text-sm font-semibold text-slate-200 tabular-nums">00:00</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Application Content -->
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-6">
+
+        <!-- Custom Notification / Alert Banner (Replaces native alert()) -->
+        <div id="notificationBox" class="hidden rounded-xl p-4 border transition-all duration-300 flex items-start justify-between gap-4" role="alert">
+            <div class="flex items-start gap-3">
+                <svg id="notificationIcon" class="w-5 h-5 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"></svg>
+                <div>
+                    <h3 id="notificationTitle" class="text-sm font-semibold"></h3>
+                    <p id="notificationMessage" class="text-xs mt-1 opacity-90"></p>
+                </div>
+            </div>
+            <button id="closeNotificationBtn" class="text-current opacity-70 hover:opacity-100 p-1 rounded-lg transition-opacity" aria-label="Dismiss notification">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Video Preview Stage -->
+        <section class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col">
+            <div class="relative aspect-video bg-slate-950 w-full flex items-center justify-center overflow-hidden">
+                
+                <!-- Empty State Placeholder -->
+                <div id="emptyState" class="text-center px-6 py-12 max-w-md mx-auto flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center mb-4 text-slate-500">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-base font-semibold text-slate-200">No Active Capture or Recording</h2>
+                    <p class="text-sm text-slate-400 mt-1.5 leading-relaxed">
+                        Configure your audio preferences below and click <span class="text-indigo-400 font-medium">Start Recording</span> to choose a screen, window, or browser tab.
+                    </p>
+                </div>
+
+                <!-- HTML5 Video Element (Used for both Live Feed & Recorded Playback) -->
+                <video id="videoPreview" class="hidden w-full h-full object-contain bg-black" playsinline></video>
+
+                <!-- Live Recording Floating Badge -->
+                <div id="liveBadge" class="hidden absolute top-4 left-4 bg-red-600/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full items-center gap-2 shadow-lg">
+                    <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
+                    <span>LIVE CAPTURE</span>
+                </div>
+            </div>
+
+            <!-- Control Bar Footer inside Card -->
+            <div class="p-4 sm:p-6 bg-slate-900 border-t border-slate-800 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+                
+                <!-- Audio Configuration Toggles -->
+                <div class="flex flex-wrap items-center gap-4 sm:gap-6">
+                    <!-- System Audio Toggle -->
+                    <label class="inline-flex items-center cursor-pointer select-none group">
+                        <input type="checkbox" id="systemAudioToggle" class="sr-only peer" checked>
+                        <div class="relative w-11 h-6 bg-slate-800 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-indigo-500/50 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-slate-300 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600 peer-checked:after:bg-white"></div>
+                        <span class="ms-3 text-sm font-medium text-slate-300 group-hover:text-white transition-colors">System Audio</span>
+                    </label>
+
+                    <!-- Microphone Audio Toggle -->
+                    <label class="inline-flex items-center cursor-pointer select-none group">
+                        <input type="checkbox" id="micAudioToggle" class="sr-only peer">
+                        <div class="relative w-11 h-6 bg-slate-800 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-indigo-500/50 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-slate-300 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600 peer-checked:after:bg-white"></div>
+                        <span class="ms-3 text-sm font-medium text-slate-300 group-hover:text-white transition-colors">Microphone</span>
+                    </label>
+                </div>
+
+                <!-- Primary Action Buttons -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <!-- Start Recording Button -->
+                    <button id="startBtn" type="button" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900 transition-all shadow-lg shadow-indigo-600/20 disabled:opacity-40 disabled:pointer-events-none">
+                        <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
+                        <span>Start Recording</span>
+                    </button>
+
+                    <!-- Stop Recording Button -->
+                    <button id="stopBtn" type="button" disabled class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-rose-600 hover:bg-rose-500 active:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 focus:ring-offset-slate-900 transition-all shadow-lg shadow-rose-600/20 disabled:opacity-40 disabled:pointer-events-none">
+                        <span class="w-2.5 h-2.5 rounded-sm bg-white"></span>
+                        <span>Stop Recording</span>
+                    </button>
+
+                    <!-- Download WebM Button -->
+                    <a id="downloadBtn" class="hidden flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-950 bg-emerald-400 hover:bg-emerald-300 active:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900 transition-all shadow-lg shadow-emerald-500/20 cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        <span>Download .webm</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recording Metadata / Helpful Tips -->
+        <section class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-400">
+            <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-4">
+                <div class="font-semibold text-slate-200 mb-1 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    100% Client-Side Privacy
+                </div>
+                <p class="leading-relaxed">Your video stream is processed directly in browser memory. Nothing is ever uploaded to an external server.</p>
+            </div>
+            <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-4">
+                <div class="font-semibold text-slate-200 mb-1 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+                    Dual Audio Mixing
+                </div>
+                <p class="leading-relaxed">Combine browser/system audio with your microphone seamlessly using Web Audio API mixing.</p>
+            </div>
+            <div class="bg-slate-900/60 border border-slate-800/80 rounded-xl p-4">
+                <div class="font-semibold text-slate-200 mb-1 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"></path></svg>
+                    WebM Output (<span id="codecLabel" class="font-mono text-slate-300">VP9/VP8</span>)
+                </div>
+                <p class="leading-relaxed">Exports high-compatibility <code class="text-slate-300">.webm</code> video files ready for immediate playback or editing.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 py-5 text-center text-xs text-slate-500">
+        <p>Built with HTML5 MediaDevices &amp; MediaRecorder APIs • Works best in Chrome, Edge, Firefox, and Safari • <a style="text-decoration: underline;" href="./screencapstudio.html" download="ScreenCap Studio.HTML">Download</a> • <a style="text-decoration: underline;" href="https://share.gemini.google/r8WPyzEtqzL6">View on Gemini Canvas</a></p>
+    </footer>
+
+    <!-- Application Logic -->
+    <script>
+        (() => {
+            // DOM Elements
+            const startBtn = document.getElementById('startBtn');
+            const stopBtn = document.getElementById('stopBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const systemAudioToggle = document.getElementById('systemAudioToggle');
+            const micAudioToggle = document.getElementById('micAudioToggle');
+
+            const videoPreview = document.getElementById('videoPreview');
+            const emptyState = document.getElementById('emptyState');
+            const liveBadge = document.getElementById('liveBadge');
+
+            const statusDot = document.getElementById('statusDot');
+            const statusText = document.getElementById('statusText');
+            const timerDisplay = document.getElementById('timerDisplay');
+            const codecLabel = document.getElementById('codecLabel');
+
+            const notificationBox = document.getElementById('notificationBox');
+            const notificationIcon = document.getElementById('notificationIcon');
+            const notificationTitle = document.getElementById('notificationTitle');
+            const notificationMessage = document.getElementById('notificationMessage');
+            const closeNotificationBtn = document.getElementById('closeNotificationBtn');
+
+            // Application State
+            let mediaRecorder = null;
+            let recordedChunks = [];
+            let displayStream = null;
+            let micStream = null;
+            let combinedStream = null;
+            let audioContext = null;
+            let recordedBlobUrl = null;
+
+            let timerInterval = null;
+            let recordingStartTime = 0;
+
+            /**
+             * Displays a non-blocking notification banner in the UI
+             * @param {'error'|'warning'|'info'|'success'} type
+             * @param {string} title
+             * @param {string} message
+             */
+            function showNotification(type, title, message) {
+                const styles = {
+                    error: {
+                        box: 'bg-rose-950/70 border-rose-800 text-rose-200',
+                        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>'
+                    },
+                    warning: {
+                        box: 'bg-amber-950/70 border-amber-800 text-amber-200',
+                        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>'
+                    },
+                    info: {
+                        box: 'bg-indigo-950/70 border-indigo-800 text-indigo-200',
+                        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>'
+                    },
+                    success: {
+                        box: 'bg-emerald-950/70 border-emerald-800 text-emerald-200',
+                        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>'
+                    }
+                };
+
+                const currentStyle = styles[type] || styles.info;
+                notificationBox.className = `rounded-xl p-4 border transition-all duration-300 flex items-start justify-between gap-4 ${currentStyle.box}`;
+                notificationIcon.innerHTML = currentStyle.icon;
+                notificationTitle.textContent = title;
+                notificationMessage.textContent = message;
+                notificationBox.classList.remove('hidden');
+            }
+
+            function hideNotification() {
+                notificationBox.classList.add('hidden');
+            }
+
+            closeNotificationBtn.addEventListener('click', hideNotification);
+
+            /**
+             * Updates the UI status badge and indicator dot
+             * @param {'ready'|'recording'|'recorded'} state
+             */
+            function updateStatusUI(state) {
+                if (state === 'recording') {
+                    statusDot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse';
+                    statusText.textContent = 'Recording';
+                    statusText.className = 'text-xs font-bold text-rose-400 uppercase tracking-wider';
+                    liveBadge.classList.remove('hidden');
+                    liveBadge.classList.add('flex');
+                } else if (state === 'recorded') {
+                    statusDot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400';
+                    statusText.textContent = 'Recorded';
+                    statusText.className = 'text-xs font-bold text-emerald-400 uppercase tracking-wider';
+                    liveBadge.classList.add('hidden');
+                    liveBadge.classList.remove('flex');
+                } else {
+                    statusDot.className = 'w-2.5 h-2.5 rounded-full bg-slate-500';
+                    statusText.textContent = 'Ready';
+                    statusText.className = 'text-xs font-medium text-slate-300 uppercase tracking-wider';
+                    liveBadge.classList.add('hidden');
+                    liveBadge.classList.remove('flex');
+                }
+            }
+
+            /**
+             * Formats elapsed seconds into MM:SS or HH:MM:SS
+             */
+            function formatTime(totalSeconds) {
+                const hrs = Math.floor(totalSeconds / 3600);
+                const mins = Math.floor((totalSeconds % 3600) / 60);
+                const secs = totalSeconds % 60;
+
+                const pad = (num) => String(num).padStart(2, '0');
+                if (hrs > 0) {
+                    return `${pad(hrs)}:${pad(mins)}:${pad(secs)}`;
+                }
+                return `${pad(mins)}:${pad(secs)}`;
+            }
+
+            function startTimer() {
+                recordingStartTime = Date.now();
+                timerDisplay.textContent = '00:00';
+                timerInterval = setInterval(() => {
+                    const elapsedSeconds = Math.floor((Date.now() - recordingStartTime) / 1000);
+                    timerDisplay.textContent = formatTime(elapsedSeconds);
+                }, 500);
+            }
+
+            function stopTimer() {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+            }
+
+            /**
+             * Selects the best supported WebM MIME type for the current browser
+             */
+            function getSupportedMimeType() {
+                const types = [
+                    'video/webm;codecs=vp9,opus',
+                    'video/webm;codecs=vp8,opus',
+                    'video/webm;codecs=vp9',
+                    'video/webm;codecs=vp8',
+                    'video/webm'
+                ];
+                for (const type of types) {
+                    if (typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported(type)) {
+                        return type;
+                    }
+                }
+                return '';
+            }
+
+            // Display detected codec support in the UI
+            const detectedMime = getSupportedMimeType();
+            if (detectedMime) {
+                codecLabel.textContent = detectedMime.includes('vp9') ? 'VP9' : 'VP8';
+            }
+
+            /**
+             * Releases all active media tracks and audio contexts
+             */
+            function cleanupStreams() {
+                if (displayStream) {
+                    displayStream.getTracks().forEach(track => track.stop());
+                    displayStream = null;
+                }
+                if (micStream) {
+                    micStream.getTracks().forEach(track => track.stop());
+                    micStream = null;
+                }
+                if (combinedStream) {
+                    combinedStream.getTracks().forEach(track => track.stop());
+                    combinedStream = null;
+                }
+                if (audioContext) {
+                    audioContext.close().catch(() => {});
+                    audioContext = null;
+                }
+            }
+
+            /**
+             * Starts screen capture and optional audio recording
+             */
+            async function startRecording() {
+                hideNotification();
+
+                // Check browser support
+                if (!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia) {
+                    showNotification(
+                        'error',
+                        'Browser Not Supported',
+                        'Screen recording via getDisplayMedia is not supported in this browser or context (requires HTTPS or localhost).'
+                    );
+                    return;
+                }
+
+                // Revoke any previous recording Blob URL to free memory
+                if (recordedBlobUrl) {
+                    URL.revokeObjectURL(recordedBlobUrl);
+                    recordedBlobUrl = null;
+                }
+
+                const includeSystemAudio = systemAudioToggle.checked;
+                const includeMicAudio = micAudioToggle.checked;
+
+                try {
+                    // 1. Request Screen / Tab / Window Stream
+                    displayStream = await navigator.mediaDevices.getDisplayMedia({
+                        video: {
+                            cursor: 'always',
+                            frameRate: { ideal: 30, max: 60 }
+                        },
+                        audio: includeSystemAudio
+                    });
+
+                    // 2. Optionally Request Microphone Stream
+                    if (includeMicAudio) {
+                        try {
+                            micStream = await navigator.mediaDevices.getUserMedia({
+                                audio: {
+                                    echoCancellation: true,
+                                    noiseSuppression: true,
+                                    sampleRate: 44100
+                                },
+                                video: false
+                            });
+                        } catch (micErr) {
+                            console.warn('Microphone access denied or unavailable:', micErr);
+                            showNotification(
+                                'warning',
+                                'Microphone Unavailable',
+                                'Could not access your microphone. Recording will proceed without microphone audio.'
+                            );
+                        }
+                    }
+
+                    // 3. Combine Video + Audio Tracks cleanly
+                    const videoTrack = displayStream.getVideoTracks()[0];
+                    const displayAudioTracks = displayStream.getAudioTracks();
+                    const micAudioTracks = micStream ? micStream.getAudioTracks() : [];
+
+                    const tracksToRecord = [videoTrack];
+
+                    // Mix audio streams using Web Audio API if both sources exist, or attach single source
+                    if (displayAudioTracks.length > 0 && micAudioTracks.length > 0) {
+                        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        const destination = audioContext.createMediaStreamDestination();
+
+                        const sysSource = audioContext.createMediaStreamSource(new MediaStream([displayAudioTracks[0]]));
+                        const micSource = audioContext.createMediaStreamSource(new MediaStream([micAudioTracks[0]]));
+
+                        sysSource.connect(destination);
+                        micSource.connect(destination);
+
+                        destination.stream.getAudioTracks().forEach(track => tracksToRecord.push(track));
+                    } else if (displayAudioTracks.length > 0) {
+                        tracksToRecord.push(displayAudioTracks[0]);
+                    } else if (micAudioTracks.length > 0) {
+                        tracksToRecord.push(micAudioTracks[0]);
+                    }
+
+                    combinedStream = new MediaStream(tracksToRecord);
+
+                    // 4. Configure Live Preview in Video Element (Muted to prevent feedback loop)
+                    emptyState.classList.add('hidden');
+                    videoPreview.classList.remove('hidden');
+                    videoPreview.controls = false;
+                    videoPreview.muted = true;
+                    videoPreview.srcObject = displayStream;
+                    await videoPreview.play();
+
+                    // 5. Initialize MediaRecorder
+                    recordedChunks = [];
+                    const mimeType = getSupportedMimeType();
+                    const options = mimeType ? { mimeType } : {};
+
+                    mediaRecorder = new MediaRecorder(combinedStream, options);
+
+                    mediaRecorder.ondataavailable = (event) => {
+                        if (event.data && event.data.size > 0) {
+                            recordedChunks.push(event.data);
+                        }
+                    };
+
+                    mediaRecorder.onstop = handleRecordingStopped;
+
+                    // Handle user clicking the browser's built-in "Stop sharing" floating bar
+                    videoTrack.onended = () => {
+                        if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                            stopRecording();
+                        }
+                    };
+
+                    // Start recording with 1-second timeslice for steady memory chunks
+                    mediaRecorder.start(1000);
+
+                    // Update UI Controls
+                    startBtn.disabled = true;
+                    stopBtn.disabled = false;
+                    systemAudioToggle.disabled = true;
+                    micAudioToggle.disabled = true;
+                    downloadBtn.classList.add('hidden');
+
+                    updateStatusUI('recording');
+                    startTimer();
+
+                } catch (err) {
+                    console.error('Error starting screen recording:', err);
+                    cleanupStreams();
+
+                    if (err.name === 'NotAllowedError') {
+                        showNotification(
+                            'info',
+                            'Screen Selection Cancelled',
+                            'You cancelled the screen sharing prompt. Click "Start Recording" whenever you are ready.'
+                        );
+                    } else {
+                        showNotification(
+                            'error',
+                            'Failed to Start Recording',
+                            err.message || 'An unexpected error occurred while accessing your screen.'
+                        );
+                    }
+                }
+            }
+
+            /**
+             * Stops an active recording session
+             */
+            function stopRecording() {
+                if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                    mediaRecorder.stop();
+                }
+                stopTimer();
+            }
+
+            /**
+             * Finalizes the recorded Blob, switches the video element to playback mode, and enables download
+             */
+            function handleRecordingStopped() {
+                cleanupStreams();
+                stopTimer();
+
+                const mimeType = (mediaRecorder && mediaRecorder.mimeType) || 'video/webm';
+                const blob = new Blob(recordedChunks, { type: mimeType });
+                recordedBlobUrl = URL.createObjectURL(blob);
+
+                // Switch HTML5 Video Element from live stream to recorded playback
+                videoPreview.srcObject = null;
+                videoPreview.src = recordedBlobUrl;
+                videoPreview.muted = false;
+                videoPreview.controls = true;
+                videoPreview.load();
+
+                // Prepare Download Anchor
+                const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+                downloadBtn.href = recordedBlobUrl;
+                downloadBtn.download = `ScreenCap-Studio-recording-${timestamp}.webm`;
+                downloadBtn.classList.remove('hidden');
+
+                // Reset Controls
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+                systemAudioToggle.disabled = false;
+                micAudioToggle.disabled = false;
+
+                updateStatusUI('recorded');
+                showNotification(
+                    'success',
+                    'Recording Complete',
+                    'Your screen recording is ready to preview above or download as a .webm file.'
+                );
+            }
+
+            // Event Listeners
+            startBtn.addEventListener('click', startRecording);
+            stopBtn.addEventListener('click', stopRecording);
+        })();
+    </script>
+</body>
+</html>
