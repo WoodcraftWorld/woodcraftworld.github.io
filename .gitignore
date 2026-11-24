@@ -1,3 +1,4 @@
 tv/php/getApiKey.php
 tv/php/cache_vods.json
 tv/php/cache_videos.json
+.DS_Store
